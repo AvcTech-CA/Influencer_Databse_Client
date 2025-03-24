@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.home-main-box{
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+}
+
+.home-left, .home-right{
+    width: 50%;
+}
+
+.home-right{
+   
+}
