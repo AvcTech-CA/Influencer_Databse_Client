@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
-import './signUp.css';
+import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function SignUp() {
-  const navigate = useNavigate();
-
+function Login() {
+    const navigate=useNavigate();
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
         email: "",
-        companyName: "",
         password: ""
     });
+
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
-
-    // Email Validation
-
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +21,7 @@ function SignUp() {
         setError("");
 
         try {
-            const response = await fetch("http://localhost:5000/users/signup", {
+            const response = await fetch("http://localhost:5000/users/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -41,8 +34,7 @@ function SignUp() {
             if (response.ok) {
                 setMessage(data.message);
                 navigate('/home')
-                setFormData({ firstName: "", lastName: "", email: "", companyName: "", password: "" });
-               
+                setFormData({  email: "",  password: "" });
             } else {
                 setError(data.error || "Something went wrong");
             }
@@ -51,30 +43,14 @@ function SignUp() {
         }
     };
 
-    return (
-        <div className="signup-container">
-            <h2>Sign Up</h2>
-            {message && <p className="success-message">{message}</p>}
-            {error && <p className="error-message">{error}</p>}
-            <form onSubmit={handleSubmit} className="signup-form">
-                <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                />
-                <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                />
+  return (
+    <>
+        <div>
+            <div>
+                <h1>{message}</h1>
+            </div>
+        <form onSubmit={handleSubmit} className="signup-form">
+                
                 <input
                     type="email"
                     name="email"
@@ -84,15 +60,7 @@ function SignUp() {
                     required
                     className="form-input"
                 />
-                <input
-                    type="text"
-                    name="companyName"
-                    placeholder="Company Name"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                />
+               
                 <input
                     type="password"
                     name="password"
@@ -105,7 +73,8 @@ function SignUp() {
                 <button type="submit" className="submit-btn">Sign Up</button>
             </form>
         </div>
-    );
+    </>
+  )
 }
 
-export default SignUp;
+export default Login

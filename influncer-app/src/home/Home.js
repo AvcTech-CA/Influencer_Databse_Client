@@ -10,7 +10,7 @@ function Home() {
             <img src="" alt="" />
         </div>
         <div className='home-right'>
-            <SignUp/>
+            <h1>This is Home Page</h1>
         </div>
    </div>
    </>
