@@ -1,5 +1,5 @@
 /* General container styling */
-.signup-container {
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@
 }
 
 /* Image Section */
-.signup-container-image {
+.login-container-image {
     flex: 1;
     width: 50%;
     justify-content: center;
@@ -17,25 +17,23 @@
     padding: 20px;
 }
 
-.signup-container-image img {
+.login-container-image img {
    max-width: 100%;
     height: auto;
     border-radius: 10px;
 }
 
 /* Form Section */
-.signup-container-form {
+.login-container-form {
     width: 50%;
     background: #fff;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-   
     text-align: center;
 }
 
 /* Form Title */
-.signup-container-form h2 {
+.login-container-form h2 {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
@@ -55,11 +53,9 @@
 }
 
 /* Form Inputs */
-.signup-form {
+.login-form {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    margin: auto;
     gap: 15px;
 }
 
@@ -80,8 +76,7 @@
 
 /* Submit Button */
 .submit-btn {
-    background-color: #28a745;
-    margin: auto;
+    background: #007bff;
     color: #fff;
     padding: 12px;
     border: none;
@@ -184,16 +179,16 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .signup-container {
+    .login-container {
         flex-direction: column;
         text-align: center;
     }
 
-    .signup-container-image {
+    .login-container-image {
         display: none; /* Hide image on small screens */
     }
 
-    .signup-container-form {
+    .login-container-form {
         width: 100%;
         max-width: 100%;
     }

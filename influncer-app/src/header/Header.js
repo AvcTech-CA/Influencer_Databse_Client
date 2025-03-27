@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import './header.css';
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+    const navigate = useNavigate();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const handleLogout = async () => {
+    localStorage.removeItem("token"); // Remove token from localStorage
+    window.location.href = "/login";
+};
 
   return (
     <header className="header">
@@ -29,6 +36,8 @@ function Header() {
       <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
         <i className="fas fa-bars"></i>
       </button>
+
+      <button onClick={handleLogout}>logout</button>
     </header>
   );
 }
