@@ -30,14 +30,14 @@ function Header() {
       </nav>
 
       <div className="nav-icons">
-        <button className="sign-in-btn">Sign In</button>
+        {!localStorage.getItem('token') && <button className="sign-in-btn">Sign In</button>}
       </div>
 
       <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
         <i className="fas fa-bars"></i>
       </button>
 
-      <button onClick={handleLogout}>logout</button>
+      {localStorage.getItem('token') && <button onClick={handleLogout}>logout</button>}
     </header>
   );
 }

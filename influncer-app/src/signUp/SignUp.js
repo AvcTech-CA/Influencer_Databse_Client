@@ -16,9 +16,27 @@ function SignUp() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+  const [emailError, setemailError]=useState('');
+  const [passwordError,setpasswordError]=useState("")
 
   // Email Validation
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
+  const isValidPassword = (password) => {
+    const minLength = password.length >= 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (!minLength) return "Password must be at least 8 characters long.";
+    if (!hasUpperCase) return "Password must have at least one uppercase letter.";
+    if (!hasLowerCase) return "Password must have at least one lowercase letter.";
+    if (!hasNumber) return "Password must have at least one number.";
+    if (!hasSpecialChar) return "Password must have at least one special character (!@#$%^&*).";
+
+    return ""; // Valid password
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,10 +48,17 @@ function SignUp() {
     setError("");
 
     if (!isValidEmail(formData.email)) {
-      setError("Please enter a valid email address.");
+      setemailError("Please enter a valid email address.");
       setShowPopup(true);
       return;
     }
+
+    const passwordValidationMessage = isValidPassword(formData.password);
+    if (passwordValidationMessage) {
+      setpasswordError(passwordValidationMessage);
+      return;
+    }
+
 
     try {
       const response = await fetch("http://localhost:5000/users/signup", {
@@ -123,6 +148,7 @@ function SignUp() {
               required
               className="form-input"
             />
+            <p style={{ color: "red" }}>{passwordError}</p>
             <button type="submit" className="submit-btn">Sign Up</button>
           </form>
         </div>
