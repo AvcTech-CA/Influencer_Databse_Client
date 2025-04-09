@@ -1,18 +1,83 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-.home-main-box{
+.home-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Hero Section */
+  .hero-section {
     width: 100%;
+    min-height: 60vh;
     display: flex;
-    margin-top: 50px;
-}
-
-.home-left, .home-right{
-    width: 50%;
-}
-
-.home-right{
-   
-}
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    
+    background-image: url('../../public/images/dataset-cover.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+  
+  .cta-button {
+    background-color: #ff5722;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .cta-button:hover {
+    background-color: #e64a19;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 50px 20px;
+    background: #f5f5f5;
+  }
+  
+  .features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+  }
+  
+  .feature-card h3 {
+    color: #ff5722;
+  }
+  
+  /* User Data Section */
+  .data-section {
+    padding: 50px 20px;
+  }
+  
+  .data-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  

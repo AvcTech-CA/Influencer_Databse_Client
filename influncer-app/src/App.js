@@ -6,7 +6,9 @@ import Home from './home/Home';
 import Login from './login/Login';
 import PrivateRoute from './PrivateRoute';
 import Header from './header/Header';
-
+import UserDetails from './userDetails/UserDetails';
+import InfluencerCard from './influencer-Data/InfluencerCard';
+import InfluencerDetails from './influencerDetails/InfluencerDetails';
 function App() {
   return (
     <Router>
@@ -16,9 +18,13 @@ function App() {
         <Route path='/' element={<SignUp/>}></Route>
         <Route path="/" element={<PrivateRoute />}>
                     <Route path="/home" element={<Home />} />
-                </Route>
-        <Route path='/login' element={<Login/>}></Route>
+                    <Route path="/allInfluncers" element={<InfluencerCard />} />
+                    <Route path="/influencerDetails" element={<InfluencerDetails />} />
 
+
+        </Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/profile' element={<UserDetails/>}></Route>
       </Routes>
     </>
     </Router>

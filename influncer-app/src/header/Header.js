@@ -19,14 +19,15 @@ function Header() {
     <header className="header">
       <div className="logo">
         <img
-          src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+          src="/images/Logo.png"
           alt="Logo"
         />
       </div>
 
       <nav className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-        <a href="#">Home</a>
-        <a href="#">About Us</a>
+        <a href="/home">Home</a>
+        <a href="/allInfluncers">Influencers</a>
+        <a href="/profile">My Profile</a>
       </nav>
 
       <div className="nav-icons">
