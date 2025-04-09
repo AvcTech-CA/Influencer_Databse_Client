@@ -11,7 +11,8 @@ const InfluencerCard = () => {
   const [error, setError] = useState(null);
 
   const [nameSearch, setNameSearch] = useState('');
-  const [GeoLocationSearch, setUsernameSearch] = useState('');
+  const [geoLocationSearch, setGeoLocationSearch] = useState('');
+  const [languageSearch, setLanguageSearch] = useState('');
 
   useEffect(() => {
     const fetchInfluencers = async () => {
@@ -20,7 +21,7 @@ const InfluencerCard = () => {
         if (!response.ok) throw new Error("Failed to fetch influencers");
         const data = await response.json();
         setInfluencers(data);
-        setFilteredInfluencers(data); // initially all
+        setFilteredInfluencers(data); // initially show all
       } catch (error) {
         setError(error.message);
       } finally {
@@ -34,22 +35,17 @@ const InfluencerCard = () => {
   useEffect(() => {
     const filtered = influencers.filter((influencer) =>
       influencer.Name.toLowerCase().includes(nameSearch.toLowerCase()) &&
-      influencer.GeoLocation.toLowerCase().includes(GeoLocationSearch.toLowerCase())
+      influencer.GeoLocation.toLowerCase().includes(geoLocationSearch.toLowerCase()) &&
+      influencer.Language.toLowerCase().includes(languageSearch.toLowerCase())
     );
     setFilteredInfluencers(filtered);
-  }, [nameSearch, GeoLocationSearch, influencers]);
+  }, [nameSearch, geoLocationSearch, languageSearch, influencers]);
 
   if (loading) return <p className="loading-message">Loading influencers...</p>;
   if (error) return <p className="error-message">{error}</p>;
 
   return (
     <div className="container">
-      {/* <div className="header">
-        <button className="add-btn" onClick={() => navigate('/InfluencerForm')}>
-          + Add Influencer
-        </button>
-      </div> */}
-
       {/* Search Fields */}
       <div className="search-container">
         <input
@@ -62,12 +58,20 @@ const InfluencerCard = () => {
         <input
           type="text"
           placeholder="Search by Geolocation"
-          value={GeoLocationSearch}
-          onChange={(e) => setUsernameSearch(e.target.value)}
+          value={geoLocationSearch}
+          onChange={(e) => setGeoLocationSearch(e.target.value)}
+          className="search-input"
+        />
+        <input
+          type="text"
+          placeholder="Search by Language"
+          value={languageSearch}
+          onChange={(e) => setLanguageSearch(e.target.value)}
           className="search-input"
         />
       </div>
 
+      {/* Influencer Cards */}
       <div className="influencer-grid">
         {filteredInfluencers.map((influencer, index) => (
           <div
@@ -84,6 +88,7 @@ const InfluencerCard = () => {
               <h2>{influencer.Name}</h2>
               <p>@{influencer.Username}</p>
               <p className="location">{influencer.GeoLocation}</p>
+              <p className="language">{influencer.Language}</p>
             </div>
           </div>
         ))}
