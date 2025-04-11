@@ -20,11 +20,10 @@ function App() {
                     <Route path="/home" element={<Home />} />
                     <Route path="/allInfluncers" element={<InfluencerCard />} />
                     <Route path="/influencerDetails" element={<InfluencerDetails />} />
-
-
+                    <Route path='/profile' element={<UserDetails/>}></Route>
         </Route>
         <Route path='/login' element={<Login/>}></Route>
-        <Route path='/profile' element={<UserDetails/>}></Route>
+       
       </Routes>
     </>
     </Router>

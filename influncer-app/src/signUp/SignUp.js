@@ -10,7 +10,8 @@ function SignUp() {
     lastName: "",
     email: "",
     companyName: "",
-    password: ""
+    password: "",
+    photo:""
   });
 
   const [message, setMessage] = useState("");
@@ -42,6 +43,10 @@ function SignUp() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, Photo: e.target.files[0] });
+    console.log("FormData is :",formData)
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -59,14 +64,22 @@ function SignUp() {
       return;
     }
 
+    e.preventDefault();
+    const formDataToSend = new FormData();
+    Object.keys(formData).forEach((key) => {
+      if (Array.isArray(formData[key])) {
+        formData[key].forEach((item, index) => {
+          formDataToSend.append(`${key}[${index}]`, item);
+        });
+      } else {
+        formDataToSend.append(key, formData[key]);
+      }
+    });
 
     try {
       const response = await fetch("http://localhost:5000/users/signup", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
+        body: formDataToSend,
       });
 
       const data = await response.json();
@@ -74,7 +87,7 @@ function SignUp() {
 
       if (response.ok) {
         setMessage(data.message);
-        setFormData({ firstName: "", lastName: "", email: "", companyName: "", password: "" });
+        setFormData({ firstName: "", lastName: "", email: "", companyName: "", password: "",photo: "" });
         setShowPopup(true);
         setTimeout(() => {
           setShowPopup(false);
@@ -90,6 +103,7 @@ function SignUp() {
     }
   };
 
+
   const closePopup = () => {
     setShowPopup(false);
   };
@@ -103,6 +117,7 @@ function SignUp() {
         <div className="signup-container-form">
           <h2>Sign Up</h2>
           <form onSubmit={handleSubmit} className="signup-form">
+
             <input
               type="text"
               name="firstName"
@@ -149,6 +164,9 @@ function SignUp() {
               className="form-input"
             />
             <p style={{ color: "red" }}>{passwordError}</p>
+
+            <label>Photo:</label>
+            <input type="file" name="photo" onChange={handleFileChange} />
             <button type="submit" className="submit-btn">Sign Up</button>
           </form>
         </div>
