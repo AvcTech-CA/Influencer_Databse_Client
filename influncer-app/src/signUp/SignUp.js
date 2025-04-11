@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './signUp.css';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../apiconfig';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ function SignUp() {
     });
 
     try {
-      const response = await fetch("http://localhost:5000/users/signup", {
+      const response = await fetch(`${API_BASE_URL}/users/signup`, {
         method: "POST",
         body: formDataToSend,
       });

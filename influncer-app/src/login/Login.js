@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+import API_BASE_URL from '../apiconfig';
 
 function Login() {
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ function Login() {
         setShowPopup(false);
 
         try {
-            const response = await fetch("http://localhost:5000/users/login", {
+            const response = await fetch(`${API_BASE_URL}/users/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -61,14 +62,14 @@ function Login() {
 
     return (
         <>
-            <div className="signup-container">
-                <div className="signup-container-image">
+            <div className="login-container">
+                <div className="login-container-image">
                     <img src="/images/mainPic.jpeg" alt="Sign Up" />
                 </div>
-                <div className='signup-container-form'>
+                <div className='login-container-form'>
                 <h2>Log In</h2>
 
-                    <form onSubmit={handleSubmit} className="signup-form">
+                    <form onSubmit={handleSubmit} className="login-form">
                         <input
                             type="email"
                             name="email"
