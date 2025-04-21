@@ -15,6 +15,8 @@ function Header() {
     window.location.href = "/login";
 };
 
+
+
   return (
     <header className="header">
       <div className="logo">
@@ -31,7 +33,7 @@ function Header() {
       </nav>
 
       <div className="nav-icons">
-        {!localStorage.getItem('token') && <button className="sign-in-btn">Sign In</button>}
+        {/* {!localStorage.getItem('token') && <button className="sign-in-btn" >Sign In</button>} */}
       </div>
 
       <button className="mobile-menu-btn" onClick={toggleMobileMenu}>

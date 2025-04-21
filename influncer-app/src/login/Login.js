@@ -89,6 +89,12 @@ function Login() {
                             className="form-input"
                         />
                         <button type="submit" className="submit-btn">Login</button>
+                        <div class="signup-message">
+                            <p>
+                                New user?
+                                <a href="/" class="signup-link">Sign up here</a>
+                            </p>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -182,6 +182,26 @@
     }
 }
 
+
+.signup-message {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .signup-link {
+    font-weight: 500;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .signup-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .signup-container {

@@ -7,6 +7,7 @@ function UserDetails() {
   const [formData, setFormData] = useState({ email: '', firstName: '', lastName: '', companyName: '' });
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const [profilePhotoUrl, setProfilePhotoUrl] = useState(null);
 
   useEffect(() => {
@@ -99,18 +100,34 @@ function UserDetails() {
 
       {user ? (
         <div className="card">
-          <div className="photo-section">
-            <label>Profile Photo</label>
-            {profilePhotoUrl ? (
-              <img
-                src={`data:image/jpeg;base64,${profilePhotoUrl}`}
-                alt="Profile"
-                className="profile-photo"
-              />
-            ) : (
-              <div className="no-photo">No photo</div>
-            )}
+         <div className="photo-section">
+  <label>Profile Photo</label>
+  {profilePhotoUrl ? (
+    <>
+      <img
+        src={`data:image/jpeg;base64,${profilePhotoUrl}`}
+        alt="Profile"
+        className="profile-photo"
+        onClick={() => setShowModal(true)}
+        style={{ cursor: 'pointer' }}
+      />
+      {showModal && (
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={`data:image/jpeg;base64,${profilePhotoUrl}`}
+              alt="Full Profile"
+              className="full-photo"
+            />
+            <button className="close-btn" onClick={() => setShowModal(false)}>×</button>
           </div>
+        </div>
+      )}
+    </>
+  ) : (
+    <div className="no-photo">No photo</div>
+  )}
+</div>
 
           <FormField
             label="Email"

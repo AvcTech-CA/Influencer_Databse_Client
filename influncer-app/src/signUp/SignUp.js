@@ -169,6 +169,12 @@ function SignUp() {
             <label>Photo:</label>
             <input type="file" name="photo" onChange={handleFileChange} />
             <button type="submit" className="submit-btn">Sign Up</button>
+            <div class="signup-message">
+                            <p>
+                               Already a User?
+                                <a href="/login" class="signup-link">Login here</a>
+                            </p>
+                        </div>
           </form>
         </div>
       </div>
