@@ -64,9 +64,11 @@ function UserDetails() {
         },
         body: JSON.stringify(formData),
       });
+
       if (!res.ok) throw new Error();
-      const updatedUser = await res.json();
-      setUser(updatedUser);
+
+      // Update user state locally with formData to reflect changes immediately
+      setUser(prev => ({ ...prev, ...formData }));
       setEditMode(false);
       setSuccess('User details updated successfully!');
       setError(null);
@@ -100,34 +102,34 @@ function UserDetails() {
 
       {user ? (
         <div className="card">
-         <div className="photo-section">
-  <label>Profile Photo</label>
-  {profilePhotoUrl ? (
-    <>
-      <img
-        src={`data:image/jpeg;base64,${profilePhotoUrl}`}
-        alt="Profile"
-        className="profile-photo"
-        onClick={() => setShowModal(true)}
-        style={{ cursor: 'pointer' }}
-      />
-      {showModal && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={`data:image/jpeg;base64,${profilePhotoUrl}`}
-              alt="Full Profile"
-              className="full-photo"
-            />
-            <button className="close-btn" onClick={() => setShowModal(false)}>×</button>
+          <div className="photo-section">
+            <label>Profile Photo</label>
+            {profilePhotoUrl ? (
+              <>
+                <img
+                  src={`data:image/jpeg;base64,${profilePhotoUrl}`}
+                  alt="Profile"
+                  className="profile-photo"
+                  onClick={() => setShowModal(true)}
+                  style={{ cursor: 'pointer' }}
+                />
+                {showModal && (
+                  <div className="modal-overlay" onClick={() => setShowModal(false)}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                      <img
+                        src={`data:image/jpeg;base64,${profilePhotoUrl}`}
+                        alt="Full Profile"
+                        className="full-photo"
+                      />
+                      <button className="close-btn" onClick={() => setShowModal(false)}>×</button>
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="no-photo">No photo</div>
+            )}
           </div>
-        </div>
-      )}
-    </>
-  ) : (
-    <div className="no-photo">No photo</div>
-  )}
-</div>
 
           <FormField
             label="Email"

@@ -5,14 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Header from './header/Header';
 import Footer from './footer/Footer';
-
+import StepContext from './StepContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <StepContext>
   <React.StrictMode>
-  
-    <App />
-    
-  </React.StrictMode>
+ <App />
+</React.StrictMode>
+</StepContext>
 );
 
 // If you want to start measuring performance in your app, pass a function

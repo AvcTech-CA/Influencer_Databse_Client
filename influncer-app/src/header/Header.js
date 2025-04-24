@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './header.css';
 import { useNavigate } from "react-router-dom";
+import { multiStepContext } from '../StepContext';
 
 function Header() {
     const navigate = useNavigate();

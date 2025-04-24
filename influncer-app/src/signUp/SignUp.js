@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './signUp.css';
 import { useNavigate } from 'react-router-dom';
 import API_BASE_URL from '../apiconfig';
-
+import { multiStepContext } from '../StepContext';
 function SignUp() {
   const navigate = useNavigate();
 
