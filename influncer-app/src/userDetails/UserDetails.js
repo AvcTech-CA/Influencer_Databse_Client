@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './userDetails.css'; // You can swap with Tailwind or CSS Modules
+import API_BASE_URL from '../apiconfig';
 
 function UserDetails() {
   const [user, setUser] = useState(null);
@@ -14,7 +15,7 @@ function UserDetails() {
     const fetchUser = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await fetch('http://localhost:5000/users/specUser', {
+        const res = await fetch(`${API_BASE_URL}/users/specUser`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error();
@@ -37,7 +38,7 @@ function UserDetails() {
     if (!formData.email) return;
     const fetchPhoto = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/users/profilePhoto?email=${formData.email}`);
+        const res = await fetch(`${API_BASE_URL}/users/profilePhoto?email=${formData.email}`);
         if (!res.ok) throw new Error();
         const data = await res.json();
         setProfilePhotoUrl(data);
@@ -56,7 +57,7 @@ function UserDetails() {
   const handleSave = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://localhost:5000/users/updateUser', {
+      const res = await fetch(`${API_BASE_URL}/users/updateUser`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
