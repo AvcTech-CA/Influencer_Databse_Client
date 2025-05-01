@@ -29,6 +29,8 @@ const InfluencerDetails = () => {
     className="details-img"
   />
   <div className="details-info">
+  <button>Add this Influencer</button>
+
     <h2>{influencer.Name}</h2>
     <p><strong>Username:</strong> @{influencer.Username}</p>
     <p><strong>Location:</strong> {influencer.GeoLocation}</p>
