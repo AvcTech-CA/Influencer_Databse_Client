@@ -31,6 +31,7 @@ function Header() {
         <a href="/home">Home</a>
         <a href="/allInfluncers">Influencers</a>
         <a href="/profile">My Profile</a>
+        <a href="/campaign">My Campaigns</a>
       </nav>
 
       <div className="nav-icons">

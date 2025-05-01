@@ -9,6 +9,7 @@ import Header from './header/Header';
 import UserDetails from './userDetails/UserDetails';
 import InfluencerCard from './influencer-Data/InfluencerCard';
 import InfluencerDetails from './influencerDetails/InfluencerDetails';
+import Campaign from './my-campaign/Campaign';
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/allInfluncers" element={<InfluencerCard />} />
                     <Route path="/influencerDetails" element={<InfluencerDetails />} />
                     <Route path='/profile' element={<UserDetails/>}></Route>
+                    <Route path='/campaign' element={<Campaign/>}></Route>
         </Route>
         <Route path='/login' element={<Login/>}></Route>
        
