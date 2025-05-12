@@ -14,7 +14,8 @@ const InfluencerCard = () => {
   const [nameSearch, setNameSearch] = useState('');
   const [geoLocationSearch, setGeoLocationSearch] = useState('');
   const [languageSearch, setLanguageSearch] = useState('');
-
+  const [ContentNicheSearch,setContentNicheSearch]=useState('');
+  const[ReligionSearch,setReligionSearch]=useState('');
   useEffect(() => {
     const fetchInfluencers = async () => {
       try {
@@ -37,10 +38,12 @@ const InfluencerCard = () => {
     const filtered = influencers.filter((influencer) =>
       influencer.Name.toLowerCase().includes(nameSearch.toLowerCase()) &&
       influencer.GeoLocation.toLowerCase().includes(geoLocationSearch.toLowerCase()) &&
-      influencer.Language.toLowerCase().includes(languageSearch.toLowerCase())
+      influencer.Language.toLowerCase().includes(languageSearch.toLowerCase()) &&
+      influencer.ContentNiche.toLowerCase().includes(ContentNicheSearch.toLowerCase()) &&
+      influencer.Religion.toLowerCase().includes(ReligionSearch.toLowerCase())
     );
     setFilteredInfluencers(filtered);
-  }, [nameSearch, geoLocationSearch, languageSearch, influencers]);
+  }, [nameSearch, geoLocationSearch, languageSearch, influencers,ContentNicheSearch,ReligionSearch]);
 
   if (loading) return <p className="loading-message">Loading influencers...</p>;
   if (error) return <p className="error-message">{error}</p>;
@@ -68,6 +71,22 @@ const InfluencerCard = () => {
           placeholder="Search by Language"
           value={languageSearch}
           onChange={(e) => setLanguageSearch(e.target.value)}
+          className="search-input"
+        />
+
+        <input
+          type="text"
+          placeholder="Search by Content Niche"
+          value={ContentNicheSearch}
+          onChange={(e) => setContentNicheSearch(e.target.value)}
+          className="search-input"
+        />
+
+      <input
+          type="text"
+          placeholder="Search by Religion"
+          value={ReligionSearch}
+          onChange={(e) => setReligionSearch(e.target.value)}
           className="search-input"
         />
       </div>
