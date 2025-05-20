@@ -41,7 +41,18 @@ const InfluencerDetails = () => {
     <p><strong>EngagementRate:</strong> {influencer.EngagementRate}</p>
     <p><strong>FollowerData:</strong> {influencer.FollowerData}</p>
     <p><strong>ProfileDescription:</strong> {influencer.ProfileDescription}</p>
-    <p><strong>SocialMediaPlatformLinks:</strong> {influencer.SocialMediaPlatformLinks}</p>
+    <p><strong>SocialMediaPlatformLinks:</strong>
+    <ul>
+  {Array.isArray(influencer.SocialMediaPlatformLinks) &&
+    influencer.SocialMediaPlatformLinks.map((link, index) => (
+      <li key={index}>
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          {link}
+        </a>
+      </li>
+    ))}
+</ul>
+</p>
     <p><strong>CostRange:</strong> {influencer.CostRange}</p>
     <p><strong>ContentNiche:</strong> {influencer.ContentNiche}</p>
     <p><strong>AgencyorHandlerName:</strong> {influencer.AgencyorHandlerName}</p>
