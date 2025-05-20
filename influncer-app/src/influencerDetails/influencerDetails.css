@@ -71,6 +71,14 @@
     width: 220px;
   }
   
+  .export-buttons {
+    margin-bottom: 1rem;
+  }
+  
+  .export-buttons button {
+    margin-right: 1rem;
+  }
+  
   /* Responsive design */
   @media (max-width: 768px) {
     .details-card {
