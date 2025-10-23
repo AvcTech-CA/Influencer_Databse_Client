@@ -10,6 +10,7 @@ import UserDetails from './userDetails/UserDetails';
 import InfluencerCard from './influencer-Data/InfluencerCard';
 import InfluencerDetails from './influencerDetails/InfluencerDetails';
 import Campaign from './my-campaign/Campaign';
+import CreateCampaign from './createCampaignPage/CreateCampaign';
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/influencerDetails" element={<InfluencerDetails />} />
                     <Route path='/profile' element={<UserDetails/>}></Route>
                     <Route path='/campaign' element={<Campaign/>}></Route>
+                    <Route path='/create-campaign' element={<CreateCampaign/>}></Route>
         </Route>
         <Route path='/login' element={<Login/>}></Route>
        
